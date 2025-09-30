@@ -16,8 +16,14 @@ uid = "7303ba6d-c856-9e71-e7a8-619f7b940e3a188b37a5"
 # https://shopify.dev/docs/api/checkout-ui-extensions/latest/extension-targets-overview
 
 [[extensions.targeting]]
-module = "./src/Checkout.jsx"
-target = "purchase.checkout.block.render"
+module = "./src/suggest.js"
+target = "purchase.address-autocomplete.suggest"
+
+# [START format-suggestion.config-ext-target]
+[[extensions.targeting]]
+module = "./src/format-suggestion.js"
+target = "purchase.address-autocomplete.format-suggestion"
+# [END format-suggestion.config-ext-target]
 
 [extensions.capabilities]
 # Gives your extension access to directly query Shopify’s storefront API.
