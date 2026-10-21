@@ -38,10 +38,13 @@ async function fetchSuggestions() {
  * components the buyer's country accepts, so a country that collects the street name
  * and number separately receives them as separate values.
  */
-function toFormattedAddress(
-  { addressLineComponents, ...address },
-  acceptedAddressInputFields = []
-) {
+function toFormattedAddress(formattedAddress, acceptedAddressInputFields = []) {
+  if (!formattedAddress) {
+    return undefined;
+  }
+
+  const { addressLineComponents, ...address } = formattedAddress;
+
   const acceptedComponents = Object.fromEntries(
     Object.entries(addressLineComponents ?? {}).filter(([field]) =>
       acceptedAddressInputFields.includes(field)
