@@ -11,13 +11,13 @@ export default async () => {
 
   const { result } = await response.json();
 
-  const { formattedAddress } = result.suggestions.find(
+  const match = result.suggestions.find(
     ({ global_address_key }) => global_address_key === selectedSuggestion.id
   );
 
   return {
     formattedAddress: toFormattedAddress(
-      formattedAddress,
+      match?.formattedAddress,
       acceptedAddressInputFields
     ),
   };
